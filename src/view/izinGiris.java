@@ -1011,7 +1011,7 @@ private ImageIcon format=null;
        ps.execute();
             }catch(Exception e){                
             }
-            }
+            break;}
             case "Mazeret İzni":{
                 mazeret+=Integer.parseInt(jTextField1.getText());
                 try{
@@ -1021,18 +1021,19 @@ private ImageIcon format=null;
                 ps.execute();
                 }catch(Exception e){
                     
-                }                        
+                } break;                       
             }
-        case "İdari İzin":{
+        case "idari izin":{
                 idari+=Integer.parseInt(jTextField1.getText());
             try{
-                ps=conn.prepareStatement("UPDATE izndurum set idariizin=? where sicil=?");
+                ps=conn.prepareStatement("UPDATE izindurum set idariizin=? where sicil=?");
             ps.setInt(1,idari);
             ps.setString(2,jLabel5.getText());
             ps.execute();            
             }catch(Exception e){
                 
-            }}
+            }break;
+        }
             case "Sağlık Raporu":{
                 rapor+=Integer.parseInt(jTextField1.getText());
             try{
@@ -1042,7 +1043,7 @@ private ImageIcon format=null;
          ps.execute();
             }catch(Exception e){
                 
-            }
+            } break;
         } case "Özürsüz":{
             ozursuz+=Integer.parseInt(jTextField1.getText());
             try{ ps=conn.prepareStatement("UPDATE izindurum set ozursuz=? where sicil=?");
@@ -1052,9 +1053,9 @@ private ImageIcon format=null;
                 
             }catch(Exception e){
                 
-            }
+            } break;
         }default:{
-            
+            break;
         }      
                 }updateTable2();
             
