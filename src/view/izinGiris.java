@@ -748,7 +748,7 @@ int p=JOptionPane.showConfirmDialog(null,"Do you really want to delete","DELETE"
  JOptionPane.showMessageDialog(null,"tablodan silmek isteğiniz veriyi seçiniz"+e.toString());
 }
 updateTable();
-updateTable2();
+updateIzinDurum();
         }    
 
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -779,7 +779,7 @@ ps.execute();
 }temizle();
         updateTable();
 updateTable2();
-       
+updateIzinDurum();
                                             
 
         
@@ -977,88 +977,154 @@ private ImageIcon format=null;
     int s=0;
     byte [] personimage=null;
 
-    private void updateIzinDurum() {
-        String secim=jComboBox1.getSelectedItem().toString();
-        String sql="select * from izindurum where sicil=?";
-        
-        int izinHakedis,devir,kullanYizin = 0,kalanYizin = 0,rapor = 0,mazeret = 0,ozursuz = 0,idari=0;
-                try{
-            ps=conn.prepareStatement(sql);
-            ps.setString(1, jLabel5.getText());
-            rs=ps.executeQuery();
-            if(rs.next()){
-        izinHakedis=rs.getInt("izinhakedis");
-        devir=rs.getInt("devirizin");
-        kullanYizin=rs.getInt("kullanılanizin");
-        kalanYizin=rs.getInt("kalanyillikizin");
-        rapor=rs.getInt("rapor");
-        mazeret=rs.getInt("mazeretizni");
-        ozursuz=rs.getInt("ozursuz");
-         idari=rs.getInt("idariizin");
-            }} catch(Exception e){            
-        }   
-                switch (secim){
-            case "Yıllık İzin":
-            {
-            kullanYizin+=Integer.parseInt(jTextField1.getText());
-            kalanYizin-=Integer.parseInt(jTextField1.getText());
-            try{
-        String sql1="UPDATE izindurum set kullanılanizin=?, kalanyillikizin=? where sicil=? ";
-       ps=conn.prepareStatement(sql1);
-       ps.setInt(1, kullanYizin);
-       ps.setInt(2, kalanYizin);
-       ps.setString(3, jLabel5.getText());
-       ps.execute();
-            }catch(Exception e){                
-            }
-            break;}
-            case "Mazeret İzni":{
-                mazeret+=Integer.parseInt(jTextField1.getText());
-                try{
-                    ps=conn.prepareStatement("UPDATE izindurum set mazeretizni=? where sicil=?");
-                ps.setInt(1, mazeret);
-                ps.setString(2, jLabel5.getText());
-                ps.execute();
-                }catch(Exception e){
-                    
-                } break;                       
-            }
-        case "idari izin":{
-                idari+=Integer.parseInt(jTextField1.getText());
-            try{
-                ps=conn.prepareStatement("UPDATE izindurum set idariizin=? where sicil=?");
-            ps.setInt(1,idari);
-            ps.setString(2,jLabel5.getText());
-            ps.execute();            
-            }catch(Exception e){
-                
-            }break;
-        }
-            case "Sağlık Raporu":{
-                rapor+=Integer.parseInt(jTextField1.getText());
-            try{
-         ps=conn.prepareStatement("UPDATE izindurum set rapor=? where sicil=?");
-         ps.setInt(1,rapor);
-         ps.setString(2,jLabel5.getText() );
-         ps.execute();
-            }catch(Exception e){
-                
-            } break;
-        } case "Özürsüz":{
-            ozursuz+=Integer.parseInt(jTextField1.getText());
-            try{ ps=conn.prepareStatement("UPDATE izindurum set ozursuz=? where sicil=?");
-         ps.setInt(1,ozursuz);
-         ps.setString(2,jLabel5.getText() );
-         ps.execute();
-                
-            }catch(Exception e){
-                
-            } break;
-        }default:{
-            break;
-        }      
-                }updateTable2();
-            
+private void updateIzinDurum() {
+            int idari = 0, ozursuz = 0, mazeret = 0, rapor = 0, kullanilanYizin = 0, kalanYizin=0;
+    try{ 
+        String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
+    ps=conn.prepareStatement(sql);
+    ps.setString(1, jLabel5.getText());
+    ps.setString(2,jLabel19.getText());
+    ps.setString(3,"Yıllık İzin");
+    rs=ps.executeQuery();
+    if(rs.next()){
+        kullanilanYizin=rs.getInt("SUM(sure)");
+    }
+     }catch(Exception e){
+          
+        }System.out.println("kullanilanYizin: "+kullanilanYizin);
+      try{
+          String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
+    ps=conn.prepareStatement(sql);
+    ps.setString(1, jLabel5.getText());
+    ps.setString(2,jLabel19.getText());
+    ps.setString(3,"Mazeret İzni");
+    rs=ps.executeQuery();
+    if(rs.next()){
+        mazeret=rs.getInt("SUM(sure)");
+    }   
+      }   catch(Exception e){
+          
+      }   System.out.println("mazeret: "+mazeret);
+    try{
+          String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
+    ps=conn.prepareStatement(sql);
+    ps.setString(1, jLabel5.getText());
+    ps.setString(2,jLabel19.getText());
+    ps.setString(3,"idari izin");
+    rs=ps.executeQuery();
+    if(rs.next()){
+        idari=rs.getInt("SUM(sure)");
+    }   
+      }   catch(Exception e){
+          
+      }   System.out.println("idari: "+idari);
+    try{
+          String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
+    ps=conn.prepareStatement(sql);
+    ps.setString(1, jLabel5.getText());
+    ps.setString(2,jLabel19.getText());
+    ps.setString(3,"Sağlık Raporu");
+    rs=ps.executeQuery();
+    if(rs.next()){
+        rapor=rs.getInt("SUM(sure)");
+    }   
+      }   catch(Exception e){
+          
+      }  System.out.println("rapor: "+rapor);
+    try{
+String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
+    ps=conn.prepareStatement(sql);
+    ps.setString(1, jLabel5.getText());
+    ps.setString(2,jLabel19.getText());
+    ps.setString(3,"Özürsüz");
+    rs=ps.executeQuery();
+    if(rs.next()){
+        ozursuz=rs.getInt("SUM(sure)");
+    }   
+      }   catch(Exception e){
+          }  System.out.println("Özürsüz"+ozursuz);
+try{
+    int hakedis = 0, devir=0;
+    String sql="SELECT izinhakedis, devirizin FROM izindurum where sicil=?";
+    ps=conn.prepareStatement(sql);
+    ps.setString(1, jLabel5.getText());
+    rs=ps.executeQuery();
+    
+    if(rs.next()){
+         hakedis=rs.getInt("izinhakedis");
+         devir=rs.getInt("devirizin");
+    }
+    kalanYizin=hakedis+devir-kullanilanYizin;
+}catch(Exception e){
+    
 }
+  finally{
+    try{
+            rs.close();
+            ps.close();
+            }
+catch(Exception e){
+    
+}
+} 
+String sql1="UPDATE izindurum set sicil=?, kullanılanizin=?, kalanyillikizin=?, rapor=?, mazeretizni=?, ozursuz=?, idariizin=? where sicil=?";
+    
+    try{  
+ps=conn.prepareStatement(sql1);  
+ps.setString(1, jLabel5.getText());    
+ps.setString(2,String.valueOf(kullanilanYizin));
+ps.setString(3,String.valueOf(kalanYizin));
+ ps.setString(4,String.valueOf(rapor));
+ ps.setString(5,String.valueOf(mazeret));
+ ps.setString(6,String.valueOf(ozursuz));
+ ps.setString(7,String.valueOf(idari));
+ ps.setString(8, jLabel5.getText());
+ ps.execute();
+ JOptionPane.showMessageDialog(null,"Güncellendi");
+updateTable();
+updateTable2();
+    }catch(Exception e){
+    
+}   
+    
+}
+
+private void updateizinYilDonum(){
+    String sql="select kalanyillikizin, hakedis from izindurum where sicil=?";
+    int kalan=0,devir=0, hakedis=0, p=0;
+    
+    try{
+        ps=conn.prepareStatement(sql);
+        ps.setString(1, jLabel5.getText());
+        rs=ps.executeQuery();
+        if (rs.next()){
+            kalan=rs.getInt("kalanyillikizin");
+            hakedis=rs.getInt("hakedis");
+            if(hakedis==20)
+            {  p=JOptionPane.showConfirmDialog(null,"Yıllık izini ilk 10 senesinde "
+                        + "olan memurlar için 20 gündür. Kişinin 10 yılı tamamladıysa 30 güne tamamlanacaktır."
+                        + " 20 gün olarak devam etmek için evet 30 gün olarak ayarlamak için Hayıra basın" );
+            }
+            if (p==0)
+                hakedis=20;
+            else p=30;
+        }
+        
+    }catch(Exception e){
+        
+    }
+    if(kalan>hakedis)
+        kalan=hakedis;
+    else try{
+        String sql1="UPDATE izindurum set (izinhakedis, devirizin) values (?,?)";
+        ps=conn.prepareStatement(sql1);
+        ps.setInt(1, hakedis);
+        ps.setInt(2, kalan);
+        ps.execute();
+    } catch(Exception e){
+        }
+updateIzinDurum();
+}
+
 
 }

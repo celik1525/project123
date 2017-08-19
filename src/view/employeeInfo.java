@@ -540,6 +540,8 @@ PreparedStatement ps=null;
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Time");
+        jMenu4.setToolTipText("");
+        jMenu4.setFont(new java.awt.Font("Eras Demi ITC", 1, 12)); // NOI18N
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
