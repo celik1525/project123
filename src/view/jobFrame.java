@@ -549,23 +549,26 @@ catch(Exception e){
     }//GEN-LAST:event_ekleButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String value1=jLabel5.getText();
+    
+        String value10=jLabel17.getText();
+        String value1=jLabel5.getText();
     String value2=((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText();
     String value3=((JTextField)jDateChooser2.getDateEditor().getUiComponent()).getText();
     String value4= jTextField1.getText();
     String value5=jComboBox1.getSelectedItem().toString();
     String value6=jComboBox2.getSelectedItem().toString();
     String value7=jComboBox3.getSelectedItem().toString();
-    try{ String sql="UPDATE jop set sicil=?, begin=?, end=?, sure=?, birim=?, gorev=?, gorevsekli=? where sicil=?";
+    try{ String sql="UPDATE jop set sira=?,sicil=?, begin=?, end=?, sure=?, birim=?, gorev=?, gorevsekli=? where sira=?";
         ps=conn.prepareStatement(sql);
-        ps.setString(1,value1);
-        ps.setString(2,value2);
-        ps.setString(3,value3);
-        ps.setString(4,value4);
-        ps.setString(5,value5);
-        ps.setString(6,value6);
-        ps.setString(7,value7);
-        ps.setString(8,value1);
+        ps.setString(1,value10);
+        ps.setString(2,value1);
+        ps.setString(3,value2);
+        ps.setString(4,value3);
+        ps.setString(5,value4);
+        ps.setString(6,value5);
+        ps.setString(7,value6);
+        ps.setString(8,value7);
+        ps.setString(9,value10);
         ps.execute();
  JOptionPane.showMessageDialog(null, "GÜNCELLENDİ");
     }catch(Exception e){
