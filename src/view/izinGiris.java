@@ -103,6 +103,7 @@ public izinGiris() {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -478,6 +479,13 @@ public izinGiris() {
             }
         });
 
+        jButton8.setText("sene Devri");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -503,6 +511,8 @@ public izinGiris() {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(43, 43, 43)
                                         .addComponent(jButton7)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jButton8)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -540,7 +550,9 @@ public izinGiris() {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton7)
+                                    .addComponent(jButton8))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -587,7 +599,7 @@ private void bilgiGetir(){
           ps.setString(7, jTextField1.getText());
       ps.setString(8, jLabel19.getText());
           ps.execute();
-           JOptionPane.showMessageDialog(null, "SAVED");
+           JOptionPane.showMessageDialog(null, "EKLENDİ");
         updateTable();
         }catch(Exception x){
             
@@ -729,20 +741,21 @@ gunAralik();
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 new employeSelect().setVisible(true);
+javaConnect.frameid=1;
 dispose();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-int p=JOptionPane.showConfirmDialog(null,"Do you really want to delete","DELETE",JOptionPane.YES_NO_OPTION);
+int p=JOptionPane.showConfirmDialog(null,"Silmek istediğinizden eminmisiniz","SİL",JOptionPane.YES_NO_OPTION);
         if (p==0){
        try{
      String sql="delete from izingiris where sira=?";
            ps=conn.prepareStatement(sql);
     ps.setString(1, jLabel17.getText());
     ps.execute();
-    JOptionPane.showMessageDialog(null, "deleted");
+    JOptionPane.showMessageDialog(null, "sİLİNDİ");
 
 }catch(Exception e){
  JOptionPane.showMessageDialog(null,"tablodan silmek isteğiniz veriyi seçiniz"+e.toString());
@@ -772,7 +785,7 @@ updateIzinDurum();
             "' where sira='"+value1+"'";
 ps=conn.prepareStatement(sql);
 ps.execute();
- JOptionPane.showMessageDialog(null, "updated");
+ JOptionPane.showMessageDialog(null, "GÜNCELLENDİ");
         
 }catch(Exception e){
     
@@ -801,6 +814,11 @@ temizle();
 izinGuncelle();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+updateizinYilDonum();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
 
    
     public static void main(String args[]) {
@@ -843,6 +861,7 @@ izinGuncelle();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -991,7 +1010,7 @@ private void updateIzinDurum() {
     }
      }catch(Exception e){
           
-        }System.out.println("kullanilanYizin: "+kullanilanYizin);
+        }
       try{
           String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
     ps=conn.prepareStatement(sql);
@@ -1004,7 +1023,7 @@ private void updateIzinDurum() {
     }   
       }   catch(Exception e){
           
-      }   System.out.println("mazeret: "+mazeret);
+      }   
     try{
           String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
     ps=conn.prepareStatement(sql);
@@ -1017,7 +1036,7 @@ private void updateIzinDurum() {
     }   
       }   catch(Exception e){
           
-      }   System.out.println("idari: "+idari);
+      }  
     try{
           String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
     ps=conn.prepareStatement(sql);
@@ -1030,7 +1049,7 @@ private void updateIzinDurum() {
     }   
       }   catch(Exception e){
           
-      }  System.out.println("rapor: "+rapor);
+      }  
     try{
 String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=? and izinsekli=?";
     ps=conn.prepareStatement(sql);
@@ -1042,7 +1061,7 @@ String sql="SELECT izinsekli, SUM(sure) FROM izingiris where sicil=? and senesi=
         ozursuz=rs.getInt("SUM(sure)");
     }   
       }   catch(Exception e){
-          }  System.out.println("Özürsüz"+ozursuz);
+          } 
 try{
     int hakedis = 0, devir=0;
     String sql="SELECT izinhakedis, devirizin FROM izindurum where sicil=?";
@@ -1090,41 +1109,51 @@ updateTable2();
 }
 
 private void updateizinYilDonum(){
-    String sql="select kalanyillikizin, hakedis from izindurum where sicil=?";
-    int kalan=0,devir=0, hakedis=0, p=0;
+    String sql="SELECT * FROM izindurum WHERE sicil=?";
+    int kalan=0, devir=0, hakedis=0,p=0 ;
     
     try{
         ps=conn.prepareStatement(sql);
-        ps.setString(1, jLabel5.getText());
+        ps.setString(1,jLabel5.getText());
         rs=ps.executeQuery();
         if (rs.next()){
             kalan=rs.getInt("kalanyillikizin");
-            hakedis=rs.getInt("hakedis");
+            hakedis=rs.getInt("izinhakedis");
+        }     JOptionPane.showMessageDialog(null,"kalan: "+kalan+"hakedis: "+hakedis);
             if(hakedis==20)
-            {  p=JOptionPane.showConfirmDialog(null,"Yıllık izini ilk 10 senesinde "
+            {p=JOptionPane.showConfirmDialog(null,"Yıllık izini ilk 10 senesinde "
                         + "olan memurlar için 20 gündür. Kişinin 10 yılı tamamladıysa 30 güne tamamlanacaktır."
-                        + " 20 gün olarak devam etmek için evet 30 gün olarak ayarlamak için Hayıra basın" );
-            }
+                        + " 20 gün olarak devam etmek için evet 30 gün olarak ayarlamak için Hayıra basın","hh",JOptionPane.YES_NO_OPTION );
+            
             if (p==0)
                 hakedis=20;
-            else p=30;
-        }
+            else hakedis=30;
+        }}
         
-    }catch(Exception e){
+    catch(Exception e){
         
     }
+    System.out.println(hakedis);
     if(kalan>hakedis)
         kalan=hakedis;
-    else try{
-        String sql1="UPDATE izindurum set (izinhakedis, devirizin) values (?,?)";
+ 
+    
+        try{
+        String sql1="UPDATE izindurum set izinhakedis=?, devirizin=? where sicil=?";
         ps=conn.prepareStatement(sql1);
         ps.setInt(1, hakedis);
+            System.out.println(hakedis);
+            System.out.println(kalan);
         ps.setInt(2, kalan);
+        ps.setString(3, jLabel5.getText());
         ps.execute();
     } catch(Exception e){
         }
-updateIzinDurum();
+updateTable2();
+    updateTable();
+    updateIzinDurum();
 }
+
 
 
 }

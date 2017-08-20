@@ -29,5 +29,5 @@ public class javaConnect {
     }
     public static String normTablo;
     public static int sicil;
-
+public static int frameid;
 }

@@ -323,8 +323,13 @@ resimYukle();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 javaConnect.sicil=Integer.parseInt(jLabel6.getText());
+if(javaConnect.frameid==1){
 new izinGiris().setVisible(true);
-       this.setAlwaysOnTop(false);
+}
+else if (javaConnect.frameid==2)
+{
+    new jobFrame().setVisible(true);
+}this.setAlwaysOnTop(false);
        this.dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
