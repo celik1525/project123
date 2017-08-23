@@ -37,10 +37,12 @@ ResultSet rs=null;
 PreparedStatement ps=null;
     public employeeInfo() {
         initComponents();
+    this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         conn=javaConnect.ConnectDb();
         updateTable();
         FillCombo();
         currentDate();
+
     }
 
     /**
@@ -62,9 +64,7 @@ PreparedStatement ps=null;
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -192,24 +192,10 @@ PreparedStatement ps=null;
             }
         });
 
-        jButton3.setText("new");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         jButton7.setText("print");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setText("image");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
             }
         });
 
@@ -230,10 +216,8 @@ PreparedStatement ps=null;
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -241,11 +225,7 @@ PreparedStatement ps=null;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
@@ -725,13 +705,6 @@ FillCombo();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-close();
-Userinfo ui=new Userinfo();
-ui.setVisible(true);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 int p=JOptionPane.showConfirmDialog(null,"Do you really want to delete","DELETE",JOptionPane.YES_NO_OPTION);
         if (p==0){
@@ -755,8 +728,9 @@ try{
     String value3=jTextField3.getText();
     String value4=jTextField4.getText();
 String sql="update employeeinfo set employeeid='"+value1+"', name='"+value2+
-        "', sirname='"+value3+"', age='"+value4+"' where employeeid='"+value1+"'";
+        "', sirname='"+value3+"', age='"+value4+"' ,image=? where employeeid='"+value1+"'";
 ps=conn.prepareStatement(sql);
+ps.setBytes(1, personimage);
 ps.execute();
  JOptionPane.showMessageDialog(null, "updated");
         
@@ -868,31 +842,14 @@ MessageFormat footer=new MessageFormat("Page{0,number,integer}");
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-try{
-    String sql="select image from employeeinfo where employeeid=1";
-ps=conn.prepareStatement(sql);
-rs=ps.executeQuery();
-if(rs.next()){
-    byte [] imagedata=rs.getBytes("image");
-    format=new ImageIcon(imagedata);
-    jLabel5.setIcon(format);
-}
-
-
-}catch(Exception e){
-    
-}
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 JFileChooser chooser=new JFileChooser();
 chooser.showOpenDialog(null);
 File f=chooser.getSelectedFile();
 path=f.getAbsolutePath();
 jTextField6.setText(path);
+Icon fi=new ImageIcon(path);
+jLabel5.setIcon(fi);
 try{
     File image=new File(path);
     FileInputStream fis=new FileInputStream(image); 
@@ -1090,12 +1047,10 @@ new izinGiris().setVisible(true);
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JDesktopPane jDesktopPane1;
