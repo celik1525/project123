@@ -53,7 +53,8 @@ PreparedStatement ps=null;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
+        jobpane = new javax.swing.JDesktopPane();
+        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -79,20 +80,22 @@ PreparedStatement ps=null;
         jLabel19 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
         jComboBox3 = new javax.swing.JComboBox();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel6 = new javax.swing.JLabel();
-        ekleButton = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        ekleButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton3.setText("Değiştir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jobpane.setBackground(new java.awt.Color(153, 153, 0));
+
+        jButton4.setText("sil");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -265,11 +268,10 @@ PreparedStatement ps=null;
                                         .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
@@ -327,24 +329,6 @@ PreparedStatement ps=null;
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(jTable1);
-
         jDesktopPane1.setBackground(new java.awt.Color(0, 155, 157));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -365,10 +349,10 @@ PreparedStatement ps=null;
         );
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        ekleButton.setText("ekle");
-        ekleButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Değiştir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ekleButtonActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -379,72 +363,117 @@ PreparedStatement ps=null;
             }
         });
 
-        jButton4.setText("sil");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        ekleButton.setText("ekle");
+        ekleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                ekleButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jobpaneLayout = new javax.swing.GroupLayout(jobpane);
+        jobpane.setLayout(jobpaneLayout);
+        jobpaneLayout.setHorizontalGroup(
+            jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jobpaneLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jobpaneLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addGap(282, 282, 282)
                         .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jobpaneLayout.createSequentialGroup()
+                        .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ekleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+        jobpaneLayout.setVerticalGroup(
+            jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jobpaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jobpaneLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jobpaneLayout.createSequentialGroup()
+                        .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(jobpaneLayout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jobpaneLayout.createSequentialGroup()
                                 .addGap(28, 28, 28)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(jobpaneLayout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addComponent(ekleButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton4)))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jobpane.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jobpane.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jobpane.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jobpane.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jobpane.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jobpane.setLayer(ekleButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jobpane.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jobpane)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jobpane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new employeSelect().setVisible(true);
+      /*  new employeSelect().setVisible(true);
        javaConnect.frameid=2;
         dispose();
-
+*/selectEmployee se=new selectEmployee("job");
+this.jobpane.add(se);
+se.show();
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -573,6 +602,13 @@ catch(Exception e){
  JOptionPane.showMessageDialog(null, "GÜNCELLENDİ");
     }catch(Exception e){
         
+    }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
     }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -603,7 +639,14 @@ int Row=jTable1.getSelectedRow();
       jComboBox3.setSelectedItem(add5);
     }
     }catch(Exception e){
-    }    // TODO add your handling code here:
+    } finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }   // TODO add your handling code here:
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -618,7 +661,14 @@ int p=JOptionPane.showConfirmDialog(null,"Silmek istediğinizden eminmisiniz","S
 
 }catch(Exception e){
  JOptionPane.showMessageDialog(null,"tablodan silmek isteğiniz veriyi seçiniz"+e.toString());
-}
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
 updateTable();
 
         }    // TODO add your handling code here:
@@ -693,6 +743,7 @@ updateTable();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JDesktopPane jobpane;
     // End of variables declaration//GEN-END:variables
  private void gunTopla(){
            Calendar c = Calendar.getInstance(); 
@@ -723,6 +774,13 @@ jTextField1.setText(df.format(days));
         }
     }catch(Exception e){
         
+    }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
     }
     try{
          String sql="select * from gorev";
@@ -734,6 +792,13 @@ jTextField1.setText(df.format(days));
         }
     }catch(Exception e){
         
+    }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
     }try {
         String sql="select * from gorevsekli";
         ps=conn.prepareStatement(sql);
@@ -743,7 +808,14 @@ jTextField1.setText(df.format(days));
             jComboBox3.addItem(name);
         }}catch(Exception e){
             
-        }
+        }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
 }
        private void bilgiGetir(){
     String sql="select * from employeeinfo where employeeid=?";
@@ -764,6 +836,13 @@ jTextField1.setText(df.format(days));
             
     }catch(Exception e){
         
+    }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
     }}
        private void updateTable() {
     try{
@@ -774,7 +853,14 @@ jTextField1.setText(df.format(days));
         jTable1.setModel(DbUtils.resultSetToTableModel(rs));
     }   catch(Exception e){
         
-    } 
+    } finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
     }
     private ImageIcon format=null;
     private String path=null;

@@ -603,7 +603,14 @@ if(rs.next()){
 
 }catch(Exception e){
     
-}
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
 
     String sql="select * from employeeinfo where employeeid='"+tableClick+"'";
     ps=conn.prepareStatement(sql);
@@ -631,14 +638,21 @@ if(rs.next()){
 }catch(Exception e)
 {
     
-}
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
         
         
         
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jComboBox1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox1PopupMenuWillBecomeInvisible
-comboSelect();
+
         String tmp=(String)jComboBox1.getSelectedItem();
     try{
     String sql="select image from employeeinfo where name='"+tmp+"' ";
@@ -651,7 +665,14 @@ if(rs.next()){
 }
 }catch(Exception e){
    
-}
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
       
         String sql="Select * from employeeinfo where name=?";
 try{
@@ -667,11 +688,17 @@ try{
         jTextField3.setText(add3);
         String add4=rs.getString("age");
         jTextField4.setText(add4);
-    }
-    
+    }    
 }catch(Exception r){
     
-}
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
     
 // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1PopupMenuWillBecomeInvisible
@@ -699,24 +726,39 @@ try{
     JOptionPane.showMessageDialog(null, "SAVED");
 }catch(Exception e){
     
-}
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
 updateTable();
 FillCombo();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-int p=JOptionPane.showConfirmDialog(null,"Do you really want to delete","DELETE",JOptionPane.YES_NO_OPTION);
+int p=JOptionPane.showConfirmDialog(null,"Silmek istediğinizden emin misiniz?","SİL",JOptionPane.YES_NO_OPTION);
         if (p==0){
         String sql="delete from employeeinfo where employeeid=?";
 try{
     ps=conn.prepareStatement(sql);
     ps.setString(1, jTextField1.getText());
     ps.execute();
-    JOptionPane.showMessageDialog(null, "deleted");
+    JOptionPane.showMessageDialog(null, "SİLİNDİ");
 }catch(Exception e){
     
-}updateTable();
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
+updateTable();
 FillCombo();}
         // TODO ad{d your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -732,11 +774,20 @@ String sql="update employeeinfo set employeeid='"+value1+"', name='"+value2+
 ps=conn.prepareStatement(sql);
 ps.setBytes(1, personimage);
 ps.execute();
- JOptionPane.showMessageDialog(null, "updated");
+ JOptionPane.showMessageDialog(null, "GÜNCELLENDİ");
         
 }catch(Exception e){
     
-}updateTable();
+}
+finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
+updateTable();
 FillCombo();
        
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -769,7 +820,14 @@ try{
     jLabel5.setIcon(format);
 
     }}catch(Exception e){
-                       }
+                       }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
  try{
     String sql="select * from employeeinfo where employeeid=?";
     ps=conn.prepareStatement(sql);
@@ -789,7 +847,14 @@ try{
     jLabel5.setIcon(format);
 
     }}catch(Exception e){
-                       }
+                       }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
  try{
     String sql="select * from employeeinfo where sirname=?";
     ps=conn.prepareStatement(sql);
@@ -809,7 +874,14 @@ try{
     jLabel5.setIcon(format);
 
     }}catch(Exception e){
-                       }
+                       }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
  
     }//GEN-LAST:event_jTextField5KeyReleased
 
@@ -886,7 +958,14 @@ if(rs.next()){
 
 }catch(Exception e){
     
-}
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
 
     String sql="select * from employeeinfo where employeeid='"+tableClick+"'";
     ps=conn.prepareStatement(sql);
@@ -914,7 +993,14 @@ if(rs.next()){
 }catch(Exception e)
 {
     
-}
+}finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
 }   
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1KeyReleased
@@ -1111,9 +1197,16 @@ new izinGiris().setVisible(true);
         jTable1.setModel(DbUtils.resultSetToTableModel(rs));
     }   catch(Exception e){
         
+    }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
     } 
     }
-    private void comboSelect(){
+   /* private void comboSelect(){
         int d=jComboBox1.getSelectedIndex();
         if(d==1){
             Userinfo s=new Userinfo();
@@ -1124,7 +1217,8 @@ new izinGiris().setVisible(true);
         l.setVisible(true);
         }
     }
-private void dateTime(){
+*/
+    private void dateTime(){
     Calendar cal=new GregorianCalendar();
     int month=cal.get(Calendar.MONTH);
     int year=cal.get(Calendar.YEAR);
