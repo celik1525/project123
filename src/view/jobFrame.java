@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.proteanit.sql.DbUtils;
@@ -36,7 +37,8 @@ PreparedStatement ps=null;
      */
     public jobFrame() {
         initComponents();
-    int sicil=javaConnect.sicil;
+    this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        int sicil=javaConnect.sicil;
         jLabel5.setText(String.valueOf(sicil));
         conn=javaConnect.ConnectDb();
      bilgiGetir();
@@ -91,6 +93,7 @@ PreparedStatement ps=null;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jobpane.setBackground(new java.awt.Color(153, 153, 0));
+        jobpane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton4.setText("sil");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +101,7 @@ PreparedStatement ps=null;
                 jButton4ActionPerformed(evt);
             }
         });
+        jobpane.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 210, 73, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Görevlendirme Girişi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Black", 1, 14), new java.awt.Color(0, 0, 255))); // NOI18N
 
@@ -322,12 +326,14 @@ PreparedStatement ps=null;
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        jobpane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 67, -1, -1));
 
         jDesktopPane1.setBackground(new java.awt.Color(0, 155, 157));
 
@@ -349,12 +355,15 @@ PreparedStatement ps=null;
         );
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jobpane.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 11, -1, -1));
+
         jButton3.setText("Değiştir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        jobpane.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, 41));
 
         jButton1.setText("Güncelle");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -362,6 +371,7 @@ PreparedStatement ps=null;
                 jButton1ActionPerformed(evt);
             }
         });
+        jobpane.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 181, -1, -1));
 
         ekleButton.setText("ekle");
         ekleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -369,6 +379,7 @@ PreparedStatement ps=null;
                 ekleButtonActionPerformed(evt);
             }
         });
+        jobpane.add(ekleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 147, 73, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -388,70 +399,13 @@ PreparedStatement ps=null;
         });
         jScrollPane2.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jobpaneLayout = new javax.swing.GroupLayout(jobpane);
-        jobpane.setLayout(jobpaneLayout);
-        jobpaneLayout.setHorizontalGroup(
-            jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jobpaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jobpaneLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(282, 282, 282)
-                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jobpaneLayout.createSequentialGroup()
-                        .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ekleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jobpaneLayout.setVerticalGroup(
-            jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jobpaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jobpaneLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jobpaneLayout.createSequentialGroup()
-                        .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jobpaneLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jobpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jobpaneLayout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jobpaneLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(ekleButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)))))
-                .addContainerGap())
-        );
-        jobpane.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jobpane.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jobpane.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jobpane.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jobpane.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jobpane.setLayer(ekleButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jobpane.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jobpane.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 139, 389, 173));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addComponent(jobpane)
                 .addContainerGap())
         );
@@ -459,8 +413,8 @@ PreparedStatement ps=null;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jobpane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addComponent(jobpane, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();

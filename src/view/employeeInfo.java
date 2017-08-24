@@ -88,6 +88,14 @@ PreparedStatement ps=null;
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
+        jMenuItem23 = new javax.swing.JMenuItem();
+        jMenuItem24 = new javax.swing.JMenuItem();
+        jMenuItem25 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
@@ -108,7 +116,6 @@ PreparedStatement ps=null;
         jMenu9 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -374,7 +381,42 @@ PreparedStatement ps=null;
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Giriş");
+
+        jMenuItem18.setText("izin Giriş");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem18);
+
+        jMenuItem19.setText("Görevlendirme");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem19);
+
+        jMenuItem20.setText("Yakın Aile Bilgisi");
+        jMenu2.add(jMenuItem20);
+
+        jMenuItem21.setText("Ödül");
+        jMenu2.add(jMenuItem21);
+
+        jMenuItem22.setText("Disiplin");
+        jMenu2.add(jMenuItem22);
+
+        jMenuItem23.setText("Eğitim Seminer");
+        jMenu2.add(jMenuItem23);
+
+        jMenuItem24.setText("Mal Bildirim");
+        jMenu2.add(jMenuItem24);
+
+        jMenuItem25.setText("Taşınır Mal Demirbaş");
+        jMenu2.add(jMenuItem25);
+
         jMenuBar1.add(jMenu2);
 
         jMenu5.setText("Help");
@@ -505,14 +547,6 @@ PreparedStatement ps=null;
         jMenu10.add(jMenuItem16);
 
         jMenu9.add(jMenu10);
-
-        jMenuItem18.setText("izin Giriş");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem18);
 
         jMenuBar1.add(jMenu9);
 
@@ -771,8 +805,12 @@ try{
     String value4=jTextField4.getText();
 String sql="update employeeinfo set employeeid='"+value1+"', name='"+value2+
         "', sirname='"+value3+"', age='"+value4+"' ,image=? where employeeid='"+value1+"'";
-ps=conn.prepareStatement(sql);
-ps.setBytes(1, personimage);
+String sql1="update employeeinfo set employeeid='"+value1+"', name='"+value2+
+        "', sirname='"+value3+"', age='"+value4+"' where employeeid='"+value1+"'";
+if (jTextField6.getText().equals(""))
+ps=conn.prepareStatement(sql1);
+else { ps=conn.prepareStatement(sql);
+ps.setBytes(1, personimage);}
 ps.execute();
  JOptionPane.showMessageDialog(null, "GÜNCELLENDİ");
         
@@ -1089,6 +1127,12 @@ new normTablo().setVisible(true);        // TODO add your handling code here:
 new izinGiris().setVisible(true);   
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+dispose();
+new jobFrame().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
  private void close() {
     WindowEvent we=new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
     Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(we);
@@ -1166,7 +1210,14 @@ new izinGiris().setVisible(true);
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
+    private javax.swing.JMenuItem jMenuItem23;
+    private javax.swing.JMenuItem jMenuItem24;
+    private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
