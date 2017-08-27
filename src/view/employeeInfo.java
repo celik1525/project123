@@ -403,9 +403,19 @@ PreparedStatement ps=null;
         jMenu2.add(jMenuItem20);
 
         jMenuItem21.setText("Ödül");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem21);
 
         jMenuItem22.setText("Disiplin");
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem22);
 
         jMenuItem23.setText("Eğitim Seminer");
@@ -1133,6 +1143,20 @@ dispose();
 new jobFrame().setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+javaConnect.odDis="odulTablo";
+        dispose();
+new odulDisiplin().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+       javaConnect.odDis="disiplinTablo";
+        dispose();
+new odulDisiplin().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
  private void close() {
     WindowEvent we=new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
     Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(we);

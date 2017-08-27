@@ -228,6 +228,11 @@ public izinGiris() {
                 jTable1MouseClicked(evt);
             }
         });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable1);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -690,45 +695,7 @@ jTextField1.setText(df.format(days));
     }//GEN-LAST:event_jComboBox2PopupMenuWillBecomeInvisible
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-int Row=jTable1.getSelectedRow();
-    String tableClick=(jTable1.getModel().getValueAt(Row, 0).toString());
-        
-    try{   
-    String sql="select * from izingiris where sira=?";
-    ps=conn.prepareStatement(sql);
-    ps.setString(1,tableClick);
-    rs=ps.executeQuery();
-    if(rs.next()){
-       String add8=rs.getString("sira");
-       jLabel17.setText(add8);
-       String add1=rs.getString("sicil");
-       jLabel5.setText(add1);
-       String add2=rs.getString("izinsekli");
-       jComboBox1.setSelectedItem(add2);
-        String add5=rs.getString("izinadresi");
-       jTextArea1.setText(add5);
-        String add6=rs.getString("izinili");
-       jTextField2.setText(add6);
-        String add7=rs.getString("sure");
-        jTextField1.setText(add7);
-        String add13=rs.getString("begin");
-        jDateChooser1.setDate(dateFormat.parse(add13));
-        String add14=rs.getString("end");
-      jDateChooser2.setDate(dateFormat.parse(add14));  
-String add15=rs.getString("senesi");
-jLabel19.setText(add15);
-    }
-    }catch(Exception e)
-{
-    }finally{
-        try{
-            rs.close();
-        ps.close();
-        } catch(Exception e){
-        
-    }
-    }
-    
+updateUnvan();    
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -901,6 +868,11 @@ izinGuncelle();
 updateizinYilDonum();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+updateUnvan();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1KeyReleased
 
    
     public static void main(String args[]) {
@@ -1335,6 +1307,47 @@ updateTable2();
     updateTable();
     updateIzinDurum();
 }
+
+    private void updateUnvan() {
+        int Row=jTable1.getSelectedRow();
+    String tableClick=(jTable1.getModel().getValueAt(Row, 0).toString());
+        
+    try{   
+    String sql="select * from izingiris where sira=?";
+    ps=conn.prepareStatement(sql);
+    ps.setString(1,tableClick);
+    rs=ps.executeQuery();
+    if(rs.next()){
+       String add8=rs.getString("sira");
+       jLabel17.setText(add8);
+       String add1=rs.getString("sicil");
+       jLabel5.setText(add1);
+       String add2=rs.getString("izinsekli");
+       jComboBox1.setSelectedItem(add2);
+        String add5=rs.getString("izinadresi");
+       jTextArea1.setText(add5);
+        String add6=rs.getString("izinili");
+       jTextField2.setText(add6);
+        String add7=rs.getString("sure");
+        jTextField1.setText(add7);
+        String add13=rs.getString("begin");
+        jDateChooser1.setDate(dateFormat.parse(add13));
+        String add14=rs.getString("end");
+      jDateChooser2.setDate(dateFormat.parse(add14));  
+String add15=rs.getString("senesi");
+jLabel19.setText(add15);
+    }
+    }catch(Exception e)
+{
+    }finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }
+    }
+ }
 
 
 

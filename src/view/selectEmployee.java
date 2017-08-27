@@ -256,6 +256,8 @@ public void resimYukle(){
             new izinGiris().setVisible(true);
         else if(pencere.equals("job"))
             new jobFrame().setVisible(true);
+        else if (pencere.equals("hizmet"))
+            new HizmetCetveli().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

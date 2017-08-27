@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -397,6 +398,11 @@ PreparedStatement ps=null;
                 jTable1MouseClicked(evt);
             }
         });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jobpane.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 139, 389, 173));
@@ -568,7 +574,12 @@ catch(Exception e){
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-int Row=jTable1.getSelectedRow();
+updateUnvan();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void updateUnvan(){
+        int Row=jTable1.getSelectedRow();
     String tableClick=(jTable1.getModel().getValueAt(Row, 0).toString());
         
     try{   
@@ -600,9 +611,8 @@ int Row=jTable1.getSelectedRow();
         } catch(Exception e){
         
     }
-    }   // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1MouseClicked
-
+    }
+    }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 int p=JOptionPane.showConfirmDialog(null,"Silmek istediğinizden eminmisiniz","SİL",JOptionPane.YES_NO_OPTION);
         if (p==0){
@@ -627,6 +637,12 @@ updateTable();
 
         }    // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+ if(evt.getKeyCode()==KeyEvent.VK_UP||evt.getKeyCode()==KeyEvent.VK_DOWN){
+            updateUnvan();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1KeyReleased
 
     /**
      * @param args the command line arguments
