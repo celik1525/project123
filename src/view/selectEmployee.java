@@ -252,13 +252,14 @@ public void resimYukle(){
 }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         javaConnect.sicil=Integer.parseInt(jLabel6.getText());
-        if (pencere.equals("izin"))
+       if (pencere.equals("izin"))
             new izinGiris().setVisible(true);
         else if(pencere.equals("job"))
             new jobFrame().setVisible(true);
         else if (pencere.equals("hizmet"))
             new HizmetCetveli().setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased

@@ -5,6 +5,9 @@
  */
 package project123;
 import java.sql.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.*;
 /**
  *
@@ -24,9 +27,12 @@ public class javaConnect {
          JOptionPane.showMessageDialog(null, e);
             return null;
         }
-        
-        
+            
     }
+    public void baglanJPA(){
+        EntityManager em=Persistence.createEntityManagerFactory("projec123JPAPU").createEntityManager();
+    }
+    
     public static String normTablo;
     public static int sicil;
     public static String odDis;

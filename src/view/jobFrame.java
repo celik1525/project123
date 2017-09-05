@@ -102,7 +102,7 @@ PreparedStatement ps=null;
                 jButton4ActionPerformed(evt);
             }
         });
-        jobpane.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 210, 73, -1));
+        jobpane.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 73, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Görevlendirme Girişi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Black", 1, 14), new java.awt.Color(0, 0, 255))); // NOI18N
 
@@ -204,10 +204,10 @@ PreparedStatement ps=null;
             }
         });
         jDateChooser2.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jDateChooser2İnputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jDateChooser2.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -372,7 +372,7 @@ PreparedStatement ps=null;
                 jButton1ActionPerformed(evt);
             }
         });
-        jobpane.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 181, -1, -1));
+        jobpane.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         ekleButton.setText("ekle");
         ekleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -380,7 +380,7 @@ PreparedStatement ps=null;
                 ekleButtonActionPerformed(evt);
             }
         });
-        jobpane.add(ekleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 147, 73, -1));
+        jobpane.add(ekleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 73, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -405,15 +405,15 @@ PreparedStatement ps=null;
         });
         jScrollPane2.setViewportView(jTable1);
 
-        jobpane.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 139, 389, 173));
+        jobpane.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 389, 173));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jobpane)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jobpane, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

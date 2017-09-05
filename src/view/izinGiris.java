@@ -107,6 +107,9 @@ public izinGiris() {
         jLabel19 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -579,7 +582,7 @@ public izinGiris() {
                         .addGap(230, 230, 230)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(izinPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -593,18 +596,23 @@ public izinGiris() {
         jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(izinPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane2))
+            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jDesktopPane2)
                 .addContainerGap())
         );
@@ -643,7 +651,68 @@ private void bilgiGetir(){
     
     
     
+    private void muhtelifIzinKontrol(){
+        int maz=0, sen=0, ozursuz=0,  rapor=0 ;
+        String sql="SELECT * FROM izindurum where sicil=?";
+        try{
+            ps=conn.prepareStatement(sql);
+            ps.setString(1, jLabel5.getText());
+            rs=ps.executeQuery();
+            if (rs.next()){
+              maz=rs.getInt("mazeretizni");
+              sen=rs.getInt("kalanyillikizin");
+              ozursuz=rs.getInt("ozursuz");
+              rapor=rs.getInt("rapor");            
+              
+            }
+            
+        }catch(Exception e){
+            
+        }   finally{
+        try{
+            rs.close();
+        ps.close();
+        } catch(Exception e){
+        
+    }}
+        int sure=Integer.parseInt(jTextField1.getText());
+      
+        switch(jComboBox1.getSelectedItem().toString()){
+            case "Yıllık İzin": if (sure>sen){JOptionPane.showMessageDialog(null,
+                    "İstenilenIzinsuresi kalan hakkınızdan fazla");
+                izinOnay=false;
+            } else izinOnay=true; break;
+            case "Mazeret İzni": if (sure>10-maz ){
+              JOptionPane.showMessageDialog(null,"kalan mazeret izni hakkıınız isteğinizden az");
+            izinOnay=false;
+            }   else izinOnay=true; break;
+            case "Sağlık Raporu": if (rapor+sure>7)
+                JOptionPane.showMessageDialog(null,"Bu yıl için kullanılan rapor sayısı 7 günü geçti");
+               izinOnay=true;break;
+            case "Babalık İzni":  if (sure>10){
+                izinOnay=false;            
+                JOptionPane.showMessageDialog(null, "Babalık İzni en fazla 10 gün olabilir");
+            }else izinOnay=true;break;
+            case "Annelik İzni": if (sure >120){ izinOnay=false;            
+                JOptionPane.showMessageDialog(null, "Annelik İzni en fazla 120 gün olabilir");
+            }else izinOnay=true;break;
+            case "Ölüm İzni": if (sure >7){ izinOnay=false;            
+                JOptionPane.showMessageDialog(null, "Ölüm İzni en fazla 7 gün olabilir");
+            }else izinOnay=true;break;
+            case "Düğün İzni": if (sure >7){ izinOnay=false;            
+                JOptionPane.showMessageDialog(null, "Düğün İzni en fazla 7 gün olabilir");
+            }else izinOnay=true;break;
+            case "Özürsüz": if (sure >=10)          
+                JOptionPane.showMessageDialog(null, "Gerekli İşlem başlatılabilir");
+            izinOnay=true;break;
+            default: izinOnay=true;break;                
+        }        
+              }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     muhtelifIzinKontrol();
+         
+     if (izinOnay){
         String sql="insert into izingiris (sicil, izinsekli,begin,end,izinadresi,izinili,sure,senesi) values (?,?,?,?,?,?,?,?)";
         try{
            ps=conn.prepareStatement(sql);
@@ -669,8 +738,9 @@ private void bilgiGetir(){
     }
     }updateTable();
         updateIzinDurum();
+     }else JOptionPane.showMessageDialog(null, "Tekrar kontrol edin");
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void gunTopla(){
            Calendar c = Calendar.getInstance(); 
 c.setTime(jDateChooser1.getDate()); 
@@ -779,7 +849,7 @@ dispose(); */
 selectEmployee se=new selectEmployee("izin");
 this.izinPanel.add(se);
 se.show();
-        // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -942,6 +1012,9 @@ updateUnvan();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1349,6 +1422,6 @@ jLabel19.setText(add15);
     }
  }
 
-
+boolean izinOnay=false;
 
 }

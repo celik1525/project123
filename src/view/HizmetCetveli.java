@@ -35,6 +35,7 @@ PreparedStatement ps=null;
 DecimalFormat df=new DecimalFormat();
     DateFormat dateFormat=new SimpleDateFormat("dd.MMM.yyyy");
     public HizmetCetveli() {
+   
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     int sicil=javaConnect.sicil;
@@ -168,6 +169,9 @@ private void bilgiGetir(){
         jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -559,6 +563,14 @@ private void bilgiGetir(){
         hizmetPanel.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hizmetPanel.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -851,6 +863,9 @@ private void bilgiGetir(){
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
