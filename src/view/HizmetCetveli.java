@@ -44,7 +44,7 @@ DecimalFormat df=new DecimalFormat();
         conn=javaConnect.ConnectDb();
     bilgiGetir();
         updateTable();
-        updateTable2();
+        
         
         
  Date d=new Date();
@@ -136,8 +136,6 @@ private void bilgiGetir(){
 
         hizmetPanel = new javax.swing.JDesktopPane();
         jButton3 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jTable1 = new javax.swing.JTable();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel5 = new javax.swing.JLabel();
@@ -181,16 +179,6 @@ private void bilgiGetir(){
                 jButton3ActionPerformed(evt);
             }
         });
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -516,8 +504,7 @@ private void bilgiGetir(){
                         .addGroup(hizmetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(hizmetPanelLayout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hizmetPanelLayout.createSequentialGroup()
                                 .addGap(0, 22, Short.MAX_VALUE)
                                 .addGroup(hizmetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,21 +529,17 @@ private void bilgiGetir(){
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(hizmetPanelLayout.createSequentialGroup()
                         .addGroup(hizmetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(hizmetPanelLayout.createSequentialGroup()
-                                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(hizmetPanelLayout.createSequentialGroup()
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(13, 13, 13)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                         .addComponent(jTable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)))
                 .addContainerGap())
         );
         hizmetPanel.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        hizmetPanel.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hizmetPanel.setLayer(jTable1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hizmetPanel.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hizmetPanel.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -691,7 +674,7 @@ private void bilgiGetir(){
                 }
             }
             updateTable();
-            updateIzinDurum();
+            
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -717,7 +700,7 @@ private void bilgiGetir(){
 
             }
         }updateTable();
-        updateIzinDurum();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -751,8 +734,7 @@ private void bilgiGetir(){
             }
         }temizle();
         updateTable();
-        updateTable2();
-        updateIzinDurum();
+        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -868,9 +850,7 @@ private void bilgiGetir(){
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
